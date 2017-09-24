@@ -8,7 +8,6 @@ var bodyParser     = require('body-parser');
 var busboy         = require('connect-busboy');
 var cookieParser   = require('cookie-parser');
 var session        = require('express-session');
-var passport       = require('passport');
 var dotenv         = require('dotenv');
 var server         = express();
 
@@ -35,8 +34,6 @@ server.use(session({
   resave: false,
   saveUninitialized: false
 }));
-server.use(passport.initialize());
-server.use(passport.session());
 
 /* ====================================================== */
 
@@ -70,6 +67,6 @@ server.all('/*', function(req, res) {
 /* ====================================================== */
 
 // start the server
-var app = server.listen(process.env.PORT || 8000, function() {
+var app = server.listen(process.env.PORT || 8080, function() {
   console.log("Server running at http://localhost:" + app.address().port);
 });

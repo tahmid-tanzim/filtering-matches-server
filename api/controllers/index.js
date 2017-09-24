@@ -1,3 +1,3 @@
 'use strict';
 
-exports.person = require('./person');
+exports.persons = require('./persons');
