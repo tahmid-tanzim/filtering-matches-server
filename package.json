@@ -1,0 +1,47 @@
+{
+  "name": "filtering-matches-server",
+  "version": "0.1.0",
+  "author": "Tahmid Tanzim <tahmid.tanzim@gmail.com>",
+  "description": "Coding exercise for Affinitas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tahmid-tanzim/filtering-matches-server.git"
+  },
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": "~8.2.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "change-case": "^3.0.0",
+    "compression": "^1.5.2",
+    "connect-busboy": "0.0.2",
+    "cookie-parser": "^1.3.5",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.5",
+    "morgan": "^1.6.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "superagent": "^3.3.1",
+    "when": "^3.7.3"
+  },
+  "devDependencies": {
+    "apidoc": "^0.16.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "should": "^11.1.2",
+    "sinon": "^1.15.4",
+    "supertest": "^2.0.1",
+    "supervisor": "^0.12.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "supervisor server.js",
+    "test": "istanbul cover --report html --dir \"__coverage__/\" --x \"__tests__/**/*\" --x \"server.js\" node_modules/.bin/_mocha -- -i \"__tests__/**/*.js\"",
+    "gen-docs": "apidoc -i api/controllers/ -o docs/"
+  }
+}
