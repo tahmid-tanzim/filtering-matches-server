@@ -31,8 +31,7 @@
     "apidoc": "^0.16.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "nodemon": "^1.12.1",
-    "should": "^11.1.2",
+    "should": "^11.2.1",
     "sinon": "^1.15.4",
     "supertest": "^2.0.1",
     "supervisor": "^0.12.0"

@@ -2,6 +2,7 @@
 logs
 *.log
 docs
+.DS_Store
 
 # Runtime data
 pids

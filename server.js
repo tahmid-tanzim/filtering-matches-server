@@ -5,7 +5,6 @@ var morgan         = require('morgan');
 var compression    = require('compression');
 var methodOverride = require('method-override');
 var bodyParser     = require('body-parser');
-var busboy         = require('connect-busboy');
 var cookieParser   = require('cookie-parser');
 var session        = require('express-session');
 var dotenv         = require('dotenv');
@@ -23,7 +22,6 @@ server.use(compression());     // Compresses response data with gzip/deflate
 server.use(methodOverride());  // Simulates DELETE and PUT
 server.use(bodyParser.json()); // Parses req.body json from html POST
 server.use(bodyParser.urlencoded({ extended: true })); // Parses urlencoded req.body, including extended syntax
-server.use(busboy());          // Parse multipart/form-data
 server.use(cookieParser());
 server.set('json spaces', 0);  // Remove superfluous spaces from JSON responses
 server.use(session({
@@ -61,7 +59,7 @@ server.use('/api/v1', require('./api'));
 
 // Respond with 404 to any routes not matching API endpoints
 server.all('/*', function(req, res) {
-    res.json({ status: 404, message: 'No endpoint exists at ' + req.originalUrl });
+    res.status(404).json({ message: 'No endpoint exists at ' + req.originalUrl });
 });
 
 /* ====================================================== */
