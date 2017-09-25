@@ -62,15 +62,20 @@ exports.get = function (req, res) {
             var score = item.compatibility_score * 100;
             return score >= query.compatibility_score[0] && score <= query.compatibility_score[1];
         })
-        .filter(function (item) {
+        .reduce(function (accumulator, item) {
+            item.city['distance_in_km'] = distance.getDistanceFromLatLonInKm(item.city.lat, item.city.lon, myCity.lat, myCity.lon);
+
             if (!query.hasOwnProperty('distance_index')) {
-                return true;
+                return accumulator.concat([item]);
             }
 
-            var diff = distance.getDistanceFromLatLonInKm(item.city.lat, item.city.lon, myCity.lat, myCity.lon);
             var index = query.distance_index;
-            return (index === 0 && diff < 30) || (index === 1 && diff >= 30 && diff <= 300) || (index === 2 && diff > 300);
-        });
+            if ((index === 0 && item.city['distance_in_km'] < 30.0) || (index === 1 && item.city['distance_in_km'] >= 30.0 && item.city['distance_in_km'] <= 300.0) || (index === 2 && item.city['distance_in_km'] > 300.0)) {
+                return accumulator.concat([item]);
+            } else {
+                return accumulator;
+            }
+        }, []);
 
     return res.status(200).json({matches: filteredData});
 };
