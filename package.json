@@ -30,7 +30,7 @@
   "devDependencies": {
     "apidoc": "^0.27.1",
     "istanbul": "^0.4.5",
-    "mocha": "^8.4.0",
+    "mocha": "^10.1.0",
     "should": "^11.2.1",
     "sinon": "^1.15.4",
     "supertest": "^3.4.2",
